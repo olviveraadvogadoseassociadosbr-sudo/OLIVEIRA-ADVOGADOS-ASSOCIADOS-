@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oliveira Advogados & Associados | Especialistas em Auxílio-Acidente</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0a192f;
+            --secondary: #112240;
+            --gold: #c5a059;
+            --gold-light: #d4af37;
+            --white: #ffffff;
+            --gray-bg: #f8f9fa;
+            --text-main: #1a1a1a;
+            --text-muted: #57606f;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, .logo-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 25, 47, 0.95);
+            padding: 12px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            transform: rotate(45deg);
+        }
+
+        .logo-icon i { transform: rotate(-45deg); font-size: 1rem; }
+
+        .logo-name {
+            color: var(--white);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .logo-sub {
+            color: var(--gold);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            min-height: 85vh;
+            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.85)), 
+                        url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+        }
+
+        .hero-content { max-width: 750px; }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span { color: var(--gold); }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            font-weight: 300;
+            color: #e0e0e0;
+            border-left: 2px solid var(--gold);
+            padding-left: 20px;
+        }
+
+        /* Buttons */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gold);
+            color: var(--primary);
+            padding: 16px 32px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+        }
+
+        /* Sections */
+        section { padding: 100px 0; }
+
+        .section-tag {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .image-box img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 20px 20px 0px -2px var(--gold);
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px;
+            border: 1px solid #eee;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .feature-card i {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+
+        /* Dark Section */
+        .dark-section {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .dark-section .section-title { color: var(--white); }
+
+        .warning-box {
+            margin-top: 60px;
+            padding: 40px;
+            border: 1px dashed var(--gold);
+            text-align: center;
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* FAQ Section Styles */
+        .faq-section {
+            background: var(--white);
+            padding: 100px 0;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        summary {
+            padding: 20px;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after {
+            content: '\f067';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+        details[open] summary::after {
+            content: '\f068';
+        }
+        details[open] summary {
+            color: var(--gold);
+        }
+        .faq-content {
+            padding: 0 20px 20px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .highlight-box {
+            background: #fff9eb;
+            border-left: 4px solid var(--gold);
+            padding: 25px;
+            margin-bottom: 40px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Floating WhatsApp */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            background: #25d366;
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            transition: var(--transition);
+        }
+
+        /* Footer */
+        footer {
+            background: #050d1a;
+            padding: 60px 0;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .grid { grid-template-columns: 1fr; gap: 40px; }
+            .header-flex { flex-direction: row; }
+            .hero { padding-top: 120px; text-align: center; }
+            .hero p { border-left: none; padding-left: 0; }
+            .image-box { order: 2; }
+            .content-box { order: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 0 20px; }
+            .wa-float span { display: none; }
+            .wa-float { padding: 15px; border-radius: 50%; }
+            .header-flex .cta-button { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fas fa-balance-scale"></i></div>
+                <div class="logo-text">
+                    <span class="logo-name">OLIVEIRA ADVOGADOS</span>
+                    <span class="logo-sub">& ASSOCIADOS</span>
+                </div>
+            </a>
+            <a href="https://wa.me/553591220140?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20se%20tenho%20direito%20ao%20Aux%C3%ADlio-Acidente%2E" class="cta-button" style="padding: 10px 20px; font-size: 0.7rem;">Análise Gratuita</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="section-tag" style="color: var(--gold-light);">Justiça Previdenciária Especializada</span>
+                <h1>O INSS pode estar lhe devendo uma <span>indenização mensal vitalícia.</span></h1>
+                <p>Se você sofreu um acidente de qualquer natureza, ficou com sequelas e voltou a trabalhar, você tem direito ao Auxílio-Acidente. Receba o benefício sem precisar parar de trabalhar.</p>
+                <a href="https://wa.me/553591220140?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20se%20tenho%20direito%20ao%20Aux%C3%ADlio-Acidente%2E" class="cta-button">Verificar meu Direito <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="grid">
+                <div class="image-box">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1000" alt="Direito">
+                </div>
+                <div class="content-box">
+                    <span class="section-tag">Entenda seu Direito</span>
+                    <h2 class="section-title">O que é o Auxílio-Acidente?</h2>
+                    <p style="margin-bottom: 20px;">Muitos trabalhadores continuam exercendo suas funções sem saber que possuem direito a um valor mensal pago pelo INSS como forma de indenização.</p>
+                    <p>Diferente do auxílio-doença, o <strong>Auxílio-Acidente é indenizatório</strong>. Isso significa que ele é pago para quem ficou com uma sequela definitiva, mas consegue trabalhar. É um dinheiro extra que cai todo mês na sua conta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark-section">
+        <div class="container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+                <span class="section-tag">Critérios de Elegibilidade</span>
+                <h2 class="section-title">Você se encaixa nessas condições?</h2>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card" style="background: var(--secondary); border: none; color: white;">
+                    <i class="fas fa-file-medical-alt"></i>
+                    <h3>Sequelas Permanentes</h3>
+                    <p style="color: #94a3b8; font-size: 0.95rem;">Fraturas, perdas de movimentos, redução de audição ou visão decorrentes de qualquer acidente.</p>
+                </div>
+                <div class="feature-card" style="background: var(--secondary); border: none; color: white;">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Vínculo Empregatício</h3>
+                    <p style="color: #94a3b8; font-size: 0.95rem;">Ter qualidade de segurado na época do acidente (estar trabalhando registrado ou no período de graça).</p>
+                </div>
+                <div class="feature-card" style="background: var(--secondary); border: none; color: white;">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Consolidação da Lesão</h3>
+                    <p style="color: #94a3b8; font-size: 0.95rem;">O benefício é devido a partir do momento em que o auxílio-doença é interrompido e você volta ao trabalho.</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <p>"O Auxílio-Acidente não é um favor do INSS, é um direito garantido por lei para compensar o seu maior esforço no trabalho após uma lesão."</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span class="section-tag">Dúvidas Comuns</span>
+                <h2 class="section-title">Perguntas Frequentes</h2>
+            </div>
+
+            <div class="faq-container">
+                <div class="highlight-box">
+                    <p><strong><i class="fas fa-info-circle"></i> Informação Crucial:</strong> O Auxílio-Acidente é devido em casos de <strong>acidentes de qualquer natureza</strong>. Isso inclui acidentes domésticos, no trânsito, durante o lazer ou esportes. Não é necessário que o acidente tenha ocorrido no ambiente de trabalho para você ter direito ao benefício.</p>
+                </div>
+
+                <div class="faq-item">
+                    <details>
+                        <summary>1. O que é exatamente o Auxílio-Acidente?</summary>
+                        <div class="faq-content">
+                            É um benefício de caráter indenizatório pago pelo INSS ao segurado que, após a consolidação das lesões decorrentes de um acidente, apresenta sequelas que reduzem sua capacidade para o trabalho que habitualmente exercia.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="faq-item">
+                    <details>
+                        <summary>2. Preciso parar de trabalhar para receber?</summary>
+                        <div class="faq-content">
+                            Não! Como ele tem natureza de indenização, você pode continuar trabalhando normalmente com carteira assinada e recebendo o benefício mensalmente.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="faq-item">
+                    <details>
+                        <summary>3. O acidente precisa ser obrigatoriamente no trabalho?</summary>
+                        <div class="faq-content">
+                            <strong>Não.</strong> O benefício cobre acidentes de qualquer natureza. Se você sofreu uma queda em casa, um acidente de moto no fim de semana ou qualquer outro incidente que deixou sequela, você tem direito.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="faq-item">
+                    <details>
+                        <summary>4. Quais tipos de sequelas dão direito ao benefício?</summary>
+                        <div class="faq-content">
+                            Qualquer redução da capacidade, mesmo que mínima. Exemplos comuns: perda de mobilidade em um dedo, encurtamento de membro, redução da visão ou audição, ou limitações após cirurgias ortopédicas.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="faq-item">
+                    <details>
+                        <summary>5. Qual o valor do Auxílio-Acidente?</summary>
+                        <div class="faq-content">
+                            Geralmente, o valor corresponde a 50% do salário de benefício. É um valor pago mensalmente que serve como um complemento à sua renda.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="faq-item">
+                    <details>
+                        <summary>6. Se eu for demitido, perco o benefício?</summary>
+                        <div class="faq-content">
+                            Não. O benefício é seu e não depende do vínculo com uma empresa específica. Ele só cessa quando você vier a se aposentar ou em caso de óbito.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="faq-item">
+                    <details>
+                        <summary>7. O acidente aconteceu há anos. Ainda posso pedir?</summary>
+                        <div class="faq-content">
+                            Sim. Se você ainda possui a sequela e tinha qualidade de segurado (estava trabalhando ou no período de graça) na data do acidente, é possível buscar o direito e até os atrasados.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="faq-item">
+                    <details>
+                        <summary>8. Recebi Auxílio-Doença na época. Isso ajuda?</summary>
+                        <div class="faq-content">
+                            Sim, é um forte indício. O INSS deveria ter convertido seu Auxílio-Doença em Auxílio-Acidente automaticamente se houvesse sequela. Se não fez, podemos solicitar.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="faq-item">
+                    <details>
+                        <summary>9. O MEI tem direito ao Auxílio-Acidente?</summary>
+                        <div class="faq-content">
+                            Infelizmente, por regra da lei atual, o Contribuinte Individual (autônomos e MEI) não tem direito a este benefício específico. Ele é focado em empregados CLT, trabalhadores avulsos e segurados especiais.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="faq-item">
+                    <details>
+                        <summary>10. Como iniciar o processo de análise?</summary>
+                        <div class="faq-content">
+                            Basta clicar no botão de WhatsApp. Analisaremos seus laudos médicos e histórico previdenciário para identificar a viabilidade do seu pedido sem custos iniciais.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: var(--gray-bg);">
+        <div class="container" style="text-align: center;">
+            <span class="section-tag">Próximo Passo</span>
+            <h2 class="section-title">Não deixe seu direito prescrever</h2>
+            <p style="max-width: 650px; margin: 0 auto 40px; color: var(--text-muted);">Realizamos uma análise técnica minuciosa de laudos e documentos para garantir o êxito do seu pedido perante a Previdência Social.</p>
+            <a href="https://wa.me/553591220140?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20se%20tenho%20direito%20ao%20Aux%C3%ADlio-Acidente%2E" class="cta-button">Falar com Especialista Agora</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="justify-content: center; margin-bottom: 25px;">
+                <div class="logo-icon"><i class="fas fa-balance-scale"></i></div>
+                <div class="logo-name" style="font-size: 1rem;">Oliveira Advogados & Associados</div>
+            </div>
+            <p>&copy; 2026 Oliveira Advogados & Associados. <br>Todos os direitos reservados. Atendimento na Sala da OAB: 
+            Av. Dr. Oscar Pirajá Martins, 741 – Jardim Santo André, São João da Boa Vista/SP – CEP 13874-000 OAB — 37ª Subseção.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/553591220140?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20se%20tenho%20direito%20ao%20Aux%C3%ADlio-Acidente%2E" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>CONSULTAR MEU CASO</span>
+    </a>
+
+</body>
+</html>
